@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>Textarea test</title>
+    <script src="../jquery.js"></script>
+    <script>
+      function setSelection( textarea, start, end ){
+        textarea.selectionStart = start;
+        textarea.selectionEnd = end; 
+      }
+
+      function loopSelection( start, end, timeout ){
+        var start = start || 0;
+        var end = end || 1;
+        var timeout = timeout || 500;
+        var textarea = document.getElementById("text");
+
+        setSelection( textarea, start, end );
+
+        setTimeout( "loopSelection(" + (start + 1) + "," + (end + 1) + ")", timeout );
+      }
+
+      window.onload = function(){
+        
+        setTimeout(loopSelection, 1000);
+  
+      }
+    </script>
+  </head>
+  <body>
+    <textarea id="text" rows="10" cols="50">
+      Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.
+    </textarea>
+  </body>
+</html>
